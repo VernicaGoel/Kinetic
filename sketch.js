@@ -4,7 +4,7 @@ let t = 0;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
-  fill("lightblue");
+  fill("lightgreen");
 }
 
 function draw() {
@@ -18,12 +18,12 @@ function draw() {
       
       const angle = xAngle * (x / width) + yAngle * (y / height);
 
-      const aX = x + 50 * sin(2 * PI * t + angle);
-      const bY = y + 50 * cos(2 * PI * t + angle);
+      const aX = x + 25 * tan(2 * PI * t + angle);
+      const bY = y + 25 * tan(2 * PI * t + angle);
 
       ellipse(aX, bY, 5); 
     }
   }
 
-  t = t + 0.01; 
+  t = t + 0.05; 
 }
