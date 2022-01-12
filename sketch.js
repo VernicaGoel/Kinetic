@@ -1,29 +1,43 @@
-
-let t = 0; 
-
+var h=0;
+var theta = 5;
+var circ = 500;
+var x=50;
+var speed=10;
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  noStroke();
-  fill("lightpink");
+  colorMode(HSB);
+
 }
 
 function draw() {
-  background(10, 10); 
+  background(0);
+  noStroke();
   
-  for (let x = 0; x <= width; x = x + 100) {
-    for (let y = 0; y <= height; y = y + 100) {
-      
-      const xAngle = map(mouseX, 0, width, 5 * PI, 10 * PI, true);
-      const yAngle = map(mouseY, 0, height, 5 * PI, 10 * PI, true);
-      
-      const angle = xAngle * (x / width) + yAngle * (y / height);
-
-      const aX = x + 45 * sin(2 * PI * t + angle);
-      const bY = y + 60 * cos(2 * PI * t + angle);
-
-      ellipse(aX, bY, 50); 
-    }
+  Aoffset = 360/circ;
+  Soffset = 100/circ;
+  Xoffset = width/circ;
+  
+  AA= map(mouseX, 0, width, 0.1, 25);
+  
+  for(let i=0; i<circ;i++) {
+    y = windowHeight/5 *  cos(theta + i + Aoffset + AA)
+  
+  fill(h%360,i*Soffset,100);
+    let size = map(i,0,circ,0,15);
+  triangle(i * Xoffset,  100+y, size, 10,20,5);
   }
-
-  t = t + 0.01; 
+  
+  AA= map(mouseY, 0, width, 0.1, 5);
+  
+  for(let i=0; i<circ;i++) {
+    y = windowHeight/5 *  tan(theta + i + Aoffset + AA)
+  
+  fill(h%360,i*Soffset,100);
+    let size = map(i,0,circ,0,10);
+  triangle(i * Xoffset ,100+y, size,10,20,5);
+  }
+    h++;
+  theta = theta + 0.001;
+   
 }
+
